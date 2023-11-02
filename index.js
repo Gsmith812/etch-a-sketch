@@ -1,9 +1,7 @@
-// Grab container div for grid and append initial default grid of 16x16 squares
-
 const gridContainer = document.querySelector('.gridContainer');
 const gridSlider = document.querySelector('.gridSlider');
 const sizeLabel = document.querySelector('label');
-
+const fillColor = document.querySelector('.fillColor');
 
 //set default value of grid size to 16x16 and label text to match
 gridSlider.value = 16;
@@ -46,7 +44,7 @@ function createGrid(gridSliderVal) {
 
     squares.forEach(square => {
         square.addEventListener('mouseover', e => {
-            e.target.style.backgroundColor = 'black';
+            e.target.style.backgroundColor = fillColor.value;
         })
     });
 }
