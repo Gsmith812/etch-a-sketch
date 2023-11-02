@@ -37,8 +37,7 @@ h1 {
     flex-wrap: wrap;
     height: 500px;
     width: 500px;
-    padding: 10px;
-    background-color: lightslategray;
+    background-color: white;
     flex: 3;
     margin: 20px;
 }

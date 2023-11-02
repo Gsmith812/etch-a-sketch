@@ -5,6 +5,7 @@ const fillColor = document.querySelector('.fillColor');
 const clearBtn = document.querySelector('.clear');
 const rainbowBtn = document.querySelector('.rainbow');
 const eraserBtn = document.querySelector('.eraser');
+const shaderBtn = document.querySelector('.shader')
 
 //set default value of grid size to 16x16 and label text to match
 gridSlider.value = 16;
@@ -36,6 +37,8 @@ fillColor.addEventListener('click', () => selectedCtrl = fillColor);
 rainbowBtn.addEventListener('click', () => selectedCtrl = rainbowBtn);
 
 eraserBtn.addEventListener('click', () => selectedCtrl = eraserBtn);
+
+shaderBtn.addEventListener('click', () => selectedCtrl = shaderBtn);
 
 clearBtn.addEventListener('click', clearGrid);
 
@@ -72,15 +75,26 @@ function createGrid(gridSliderVal) {
         square.addEventListener('mouseover', e => {
             if(selectedCtrl === fillColor) {
                 e.target.style.backgroundColor = fillColor.value;
+                e.target.style.opacity = '1';
             } else if (selectedCtrl === rainbowBtn) {
+                e.target.style.opacity = '1';
                 e.target.style.backgroundColor = getRandomColor();
+            } else if (selectedCtrl === shaderBtn){
+                let opacity = e.target.style.opacity;
+                if(opacity === '') {
+                    e.target.style.backgroundColor = fillColor.value;
+                    e.target.style.opacity = '0.1';
+                } else {
+                    e.target.style.backgroundColor = fillColor.value;
+                    e.target.style.opacity = `${parseFloat(opacity) + .1}`;
+                }
             } else {
                 e.target.style.backgroundColor = '#FFFFFF';
             }
             
         })
     });
-}
+};
 
 // create function to clear grid when slider value changes
 
