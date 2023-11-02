@@ -1,9 +1,13 @@
 /* Styles for overall structure and layout */
+body {
+    background-color: lightslategray;
+}
 
 h1 {
     text-align: center;
     font-size: 50px;
     margin:30px;
+    color: lightblue;
 }
 
 .contentWrapper {
@@ -34,7 +38,7 @@ h1 {
     height: 500px;
     width: 500px;
     padding: 10px;
-    background-color: aliceblue;
+    background-color: lightslategray;
     flex: 3;
     margin: 20px;
 }
@@ -44,17 +48,37 @@ h1 {
 h2 {
     text-align: center;
     font-size: 25px;
-    color:aliceblue
+    color:lightblue;
+    border-bottom: 2px solid lightblue;
 }
 
 label {
-    font-size: 18px;
-    font-weight: 500;
-    color:aliceblue;
+    font-size: 22px;
+    font-weight: 800;
+    color: lightblue;
 }
 
 .fillColor {
     width: 60px;
     height: 60px;
 
+}
+
+button {
+    background-color: slategray;
+    color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 10%;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+button:hover {
+    background-color: aliceblue;
+}
+
+button:active {
+    opacity: 50%;
 }
