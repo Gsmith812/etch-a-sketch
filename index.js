@@ -4,6 +4,7 @@ const sizeLabel = document.querySelector('label');
 const fillColor = document.querySelector('.fillColor');
 const clearBtn = document.querySelector('.clear');
 const rainbowBtn = document.querySelector('.rainbow');
+const eraserBtn = document.querySelector('.eraser');
 
 //set default value of grid size to 16x16 and label text to match
 gridSlider.value = 16;
@@ -12,7 +13,7 @@ fillColor.value = '#000000';
 
 // Setup a toggle for selected controls with default to fill color
 
-selectedCtrl = fillColor;
+let selectedCtrl = fillColor;
 
 // Create a handler function to handle changes to gridSlider value
 
@@ -27,11 +28,17 @@ gridSlider.addEventListener('mousemove', e => {
     sizeLabel.innerText = `${gridSlider.value} x ${gridSlider.value}`
 });
 
-clearBtn.addEventListener('click', clearGrid)
 
-// Add event listener to rainbow button to run get random color
+// Add Event listeners to toggle between selected control options
 
-// rainbowBtn.addEventListener('click', getRandomColor(fillColor));
+fillColor.addEventListener('click', () => selectedCtrl = fillColor);
+
+rainbowBtn.addEventListener('click', () => selectedCtrl = rainbowBtn);
+
+eraserBtn.addEventListener('click', () => selectedCtrl = eraserBtn);
+
+clearBtn.addEventListener('click', clearGrid);
+
 
 // Create function to randomize an rgb color
 
@@ -41,9 +48,6 @@ function getRandomColor() {
     return `rgb(${randomRbg()}, ${randomRbg()}, ${randomRbg()})`;
 }
 
-rainbowBtn.addEventListener('click', e => {
-    selectedCtrl = rainbowBtn;
-});
 // create a function to create the intial 16x16 grid
 
 function createGrid(gridSliderVal) {
@@ -70,6 +74,8 @@ function createGrid(gridSliderVal) {
                 e.target.style.backgroundColor = fillColor.value;
             } else if (selectedCtrl === rainbowBtn) {
                 e.target.style.backgroundColor = getRandomColor();
+            } else {
+                e.target.style.backgroundColor = '#FFFFFF';
             }
             
         })
